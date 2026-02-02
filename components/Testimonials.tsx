@@ -9,7 +9,7 @@ export default function Testimonials() {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">Patient Stories</h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Hear from those who have experienced healing and transformation with Reyansh Aayurveda.
+                        Hear from those who have experienced healing and transformation with Reyansh Ayurveda.
                     </p>
                 </div>
 

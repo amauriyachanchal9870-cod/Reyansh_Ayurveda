@@ -18,9 +18,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Reyansh Aayurveda | Healing Naturally Through Ayurveda",
-  description: "Authentic Ayurvedic treatments, Panchakarma therapy, and herbal medicine at Reyansh Aayurveda clinic.",
-  keywords: ["Ayurveda", "Panchakarma", "Herbal Medicine", "Natural Healing", "Reyansh Aayurveda"],
+  title: "Reyansh Ayurveda | Healing Naturally Through Ayurveda",
+  description: "Authentic Ayurvedic treatments, Panchakarma therapy, and herbal medicine at Reyansh Ayurveda clinic.",
+  keywords: ["Ayurveda", "Panchakarma", "Herbal Medicine", "Natural Healing", "Reyansh Ayurveda"],
 };
 
 import Navbar from "@/components/Navbar";

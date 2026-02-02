@@ -1,7 +1,7 @@
 import GalleryGrid from "@/components/GalleryGrid";
 
 export const metadata = {
-    title: "Gallery | Reyansh Aayurveda",
+    title: "Gallery | Reyansh Ayurveda",
     description: "View images of our clinic, therapy rooms, herbal garden, and happy patients.",
 };
 

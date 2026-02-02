@@ -25,9 +25,9 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2">
                         <div className="relative w-12 h-12 overflow-hidden rounded-full border-2 border-primary/20">
-                            <img src="/images/logo.png" alt="Reyansh Aayurveda Logo" className="w-full h-full object-cover" />
+                            <img src="/images/logo.png" alt="Reyansh Ayurveda Logo" className="w-full h-full object-cover" />
                         </div>
-                        <span className="text-2xl font-serif font-bold text-primary">Reyansh Aayurveda</span>
+                        <span className="text-2xl font-serif font-bold text-primary">Reyansh Ayurveda</span>
                     </Link>
 
                     {/* Desktop Navigation */}

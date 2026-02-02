@@ -1,8 +1,8 @@
 import { Leaf, Award, Users, History } from "lucide-react";
 
 export const metadata = {
-    title: "About Us | Reyansh Aayurveda",
-    description: "Learn about the mission, vision, and Ayurvedic philosophy of Reyansh Aayurveda clinic.",
+    title: "About Us | Reyansh Ayurveda",
+    description: "Learn about the mission, vision, and Ayurvedic philosophy of Reyansh Ayurveda clinic.",
 };
 
 export default function AboutPage() {
@@ -10,7 +10,7 @@ export default function AboutPage() {
         <div className="min-h-screen bg-background pb-20">
             {/* Header */}
             <div className="bg-primary py-20 text-center">
-                <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4">About Reyansh Aayurveda</h1>
+                <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4">About Reyansh Ayurveda</h1>
                 <p className="text-white/80 text-lg max-w-2xl mx-auto px-4">
                     Dedicated to restoring health and harmony through authentic Ayurveda.
                 </p>
@@ -42,7 +42,7 @@ export default function AboutPage() {
                     <div className="mb-16 rounded-xl overflow-hidden relative h-64 md:h-96 w-full shadow-lg group">
                         <img
                             src="/images/hero_background.png"
-                            alt="Reyansh Aayurveda Clinic Interior"
+                            alt="Reyansh Ayurveda Clinic Interior"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-8">

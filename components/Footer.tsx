@@ -10,9 +10,9 @@ export default function Footer() {
                     <div className="space-y-4">
                         <div className="flex items-center space-x-2 mb-2">
                             <div className="relative w-10 h-10 overflow-hidden rounded-full border border-white/20 bg-white">
-                                <img src="/images/logo.png" alt="Reyansh Aayurveda Logo" className="w-full h-full object-cover" />
+                                <img src="/images/logo.png" alt="Reyansh Ayurveda Logo" className="w-full h-full object-cover" />
                             </div>
-                            <h3 className="text-2xl font-serif font-bold text-accent">Reyansh Aayurveda</h3>
+                            <h3 className="text-2xl font-serif font-bold text-accent">Reyansh Ayurveda</h3>
                         </div>
                         <p className="text-white/80 text-sm leading-relaxed">
                             Healing naturally through authentic Ayurvedic treatments. Rejuvenate your body, mind, and soul with our holistic approach.
@@ -79,7 +79,7 @@ export default function Footer() {
 
                 <div className="border-t border-white/10 pt-8 text-center">
                     <p className="text-white/60 text-sm">
-                        © {new Date().getFullYear()} Reyansh Aayurveda. All rights reserved.
+                        © {new Date().getFullYear()} Reyansh Ayurveda. All rights reserved.
                     </p>
                 </div>
             </div>

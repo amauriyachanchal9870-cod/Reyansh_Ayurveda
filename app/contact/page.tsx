@@ -2,8 +2,8 @@ import AppointmentForm from "@/components/AppointmentForm";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export const metadata = {
-    title: "Contact Us | Reyansh Aayurveda",
-    description: "Book an appointment or visit Reyansh Aayurveda clinic in New Delhi.",
+    title: "Contact Us | Reyansh Ayurveda",
+    description: "Book an appointment or visit Reyansh Ayurveda clinic in New Delhi.",
 };
 
 export default function ContactPage() {

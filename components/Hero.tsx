@@ -39,7 +39,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md">
-                        Reyansh Aayurveda
+                        Reyansh Ayurveda
                     </h1>
                     <p className="text-lg md:text-2xl text-white/90 mb-8 font-light max-w-2xl mx-auto drop-shadow-sm">
                         Healing Naturally Through Ancient Wisdom. Restore Balance to Your Body, Mind, & Soul.

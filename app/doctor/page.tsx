@@ -2,7 +2,7 @@ import Link from "next/link";
 import { GraduationCap, Award, Stethoscope, Clock } from "lucide-react";
 
 export const metadata = {
-    title: "Our Doctor | Reyansh Aayurveda",
+    title: "Our Doctor | Reyansh Ayurveda",
     description: "Meet Dr. [Name], our expert Ayurvedic specialist with over 15 years of experience.",
 };
 
