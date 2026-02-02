@@ -18,14 +18,40 @@ export default function Footer() {
                             Healing naturally through authentic Ayurvedic treatments. Rejuvenate your body, mind, and soul with our holistic approach.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="https://www.facebook.com/share/1BuA8qkC8h/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-accent hover:text-primary transition-all group">
-                                <Facebook className="w-5 h-5" />
+                            {/* Facebook */}
+                            <a
+                                href="https://www.facebook.com/share/1BuA8qkC8h/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-[#1877F2] overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#1877F2]/40 hover:-translate-y-1"
+                                aria-label="Facebook"
+                            >
+                                <span className="absolute inset-0 bg-[#1877F2] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+                                <Facebook className="w-5 h-5 text-white/80 relative z-10 transition-colors duration-300 group-hover:text-white" />
                             </a>
-                            <a href="https://www.instagram.com/reyanshayurvedajpr?igsh=ZzFmc2dnanpwaXgw" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-accent hover:text-primary transition-all group">
-                                <Instagram className="w-5 h-5" />
+
+                            {/* Instagram */}
+                            <a
+                                href="https://www.instagram.com/reyanshayurvedajpr?igsh=ZzFmc2dnanpwaXgw"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-pink-500 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/40 hover:-translate-y-1"
+                                aria-label="Instagram"
+                            >
+                                <span className="absolute inset-0 bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#2f43f3] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+                                <Instagram className="w-5 h-5 text-white/80 relative z-10 transition-colors duration-300 group-hover:text-white" />
                             </a>
-                            <a href="https://wa.me/919079909307" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-accent hover:text-primary transition-all group">
-                                <Phone className="w-5 h-5" />
+
+                            {/* WhatsApp */}
+                            <a
+                                href="https://wa.me/919079909307"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-[#25D366] overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#25D366]/40 hover:-translate-y-1"
+                                aria-label="WhatsApp"
+                            >
+                                <span className="absolute inset-0 bg-[#25D366] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+                                <Phone className="w-5 h-5 text-white/80 relative z-10 transition-colors duration-300 group-hover:text-white" />
                             </a>
                         </div>
                     </div>

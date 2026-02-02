@@ -1,3 +1,4 @@
+
 "use client";
 
 // ... imports
@@ -54,11 +55,11 @@ export default function InteractiveReviews() {
 
         const scroll = () => {
             if (!isPaused && scrollContainer) {
-                if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth)) {
-                    // Reset to start if reached end (create a loop effect)
+                // If we've scrolled past the first set of items (halfway), reset to 0 for seamless loop
+                if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth / 2)) {
                     scrollContainer.scrollLeft = 0;
                 } else {
-                    scrollContainer.scrollLeft += 0.5; // Adjust speed here
+                    scrollContainer.scrollLeft += 1; // Smooth speed
                 }
             }
             animationFrameId = requestAnimationFrame(scroll);
@@ -75,7 +76,7 @@ export default function InteractiveReviews() {
 
         setIsSubmitting(true);
 
-        // Instant update - Removed timeout
+        // Instant update
         const review = {
             id: Date.now(),
             name: newReview.name,
@@ -84,13 +85,14 @@ export default function InteractiveReviews() {
             initials: newReview.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)
         };
 
+        // Add to TOP of the list
         setReviews([review, ...reviews]);
         setNewReview({ name: "", rating: 5, comment: "" });
         setIsSubmitting(false);
 
-        // Scroll to start to show new review
+        // Scroll to start to show new review instantly
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'auto' });
         }
     };
 
@@ -99,9 +101,9 @@ export default function InteractiveReviews() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    {/* Review Form - Fixed on left/top */}
+                    {/* Review Form */}
                     <div className="lg:col-span-1">
-                        <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10">
+                        <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10 sticky top-24">
                             <h3 className="text-2xl font-serif font-bold text-primary mb-2">Share Your Story</h3>
                             <p className="text-muted-foreground text-sm mb-6">Had a great experience? Let us know!</p>
 
@@ -148,7 +150,7 @@ export default function InteractiveReviews() {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-primary text-white font-medium py-2.5 rounded-lg hover:bg-primary-dark transition-colors flex items-center justify-center disabled:opacity-70"
+                                    className="w-full bg-primary text-white font-medium py-2.5 rounded-lg hover:bg-primary-dark transition-colors flex items-center justify-center disabled:opacity-70 cursor-pointer"
                                 >
                                     {isSubmitting ? "Posting..." : <>Post Review <Send className="w-4 h-4 ml-2" /></>}
                                 </button>
@@ -157,7 +159,7 @@ export default function InteractiveReviews() {
                     </div>
 
                     {/* Horizontal Scrollable Review List */}
-                    <div className="lg:col-span-2 flex flex-col justify-center">
+                    <div className="lg:col-span-2 flex flex-col justify-center overflow-hidden">
                         <div className="mb-8">
                             <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">Patient Stories</h2>
                             <p className="text-lg text-muted-foreground">
@@ -167,38 +169,39 @@ export default function InteractiveReviews() {
 
                         {/* Scroll Container */}
                         <div
-                            className="relative group"
+                            className="relative group w-full"
                             onMouseEnter={() => setIsPaused(true)}
                             onMouseLeave={() => setIsPaused(false)}
                         >
                             <div
                                 ref={scrollContainerRef}
-                                className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar"
+                                className="flex overflow-x-auto gap-6 pb-8 hide-scrollbar cursor-grab active:cursor-grabbing"
                                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                             >
                                 <AnimatePresence mode="popLayout" initial={false}>
-                                    {reviews.map((review) => (
+                                    {/* Render reviews TWICE for seamless loop */}
+                                    {[...reviews, ...reviews].map((review, index) => (
                                         <motion.div
-                                            key={review.id}
+                                            key={`${review.id} -${index} `}
                                             layout
-                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            initial={{ opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ duration: 0.4 }}
-                                            className="min-w-[300px] md:min-w-[350px] snap-start"
+                                            className="min-w-[250px] md:min-w-[300px] flex-shrink-0"
                                         >
-                                            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col relative hover:shadow-md transition-shadow">
+                                            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col relative hover:shadow-lg transition-all duration-300">
                                                 <Quote className="w-8 h-8 text-primary/10 absolute top-6 right-6" />
 
                                                 <div className="flex text-yellow-500 mb-4">
                                                     {[...Array(5)].map((_, i) => (
                                                         <Star
                                                             key={i}
-                                                            className={`w-4 h-4 ${i < review.rating ? 'fill-current' : 'text-gray-300'}`}
+                                                            className={`w-4 h-4 ${i < review.rating ? 'fill-current' : 'text-gray-300'} `}
                                                         />
                                                     ))}
                                                 </div>
 
-                                                <p className="text-muted-foreground mb-6 italic text-sm leading-relaxed flex-1">
+                                                <p className="text-muted-foreground mb-6 italic text-sm leading-relaxed flex-1 line-clamp-4">
                                                     "{review.comment}"
                                                 </p>
 
@@ -217,12 +220,13 @@ export default function InteractiveReviews() {
                                 </AnimatePresence>
                             </div>
                             {/* Gradient fade effect on right */}
-                            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-secondary/5 to-transparent pointer-events-none md:block hidden" />
+                            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none md:block hidden" />
+                            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none md:block hidden" />
                         </div>
 
-                        <p className="text-xs text-muted-foreground mt-2 text-center lg:text-left flex items-center">
-                            <span className="inline-block w-20 h-0.5 bg-gray-300 mr-2"></span>
-                            Scroll to see more reviews
+                        <p className="text-xs text-muted-foreground mt-2 text-center lg:text-left flex items-center opacity-70">
+                            <span className="inline-block w-8 h-0.5 bg-gray-300 mr-2"></span>
+                            Hover to pause scroll
                         </p>
                     </div>
                 </div>
