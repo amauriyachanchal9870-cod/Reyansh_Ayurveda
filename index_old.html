@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kumar Ayurveda — Natural & Authentic Ayurveda</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #B37A00;       /* golden */
+      --accent-2: #0B6A4A;     /* herbal green */
+      --bg: #0f0f10;
+      --card: #0f1720;
+      --muted: #9aa4a8;
+      --white: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: Poppins, sans-serif;
+      color: var(--white);
+      background: linear-gradient(180deg,#061014 0%, #071217 55%, #07121a 100%);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header + Logo */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      position: relative;
+      z-index: 100;
+      animation: fadeDown 0.8s ease forwards;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: contain;
+      /* maybe some shadow */
+      box-shadow: 0 8px 30px rgba(179,122,0,0.3);
+      animation: rotateIn 1s ease;
+    }
+    .logo-text {
+      animation: fadeRight 1s ease forwards 0.5s;
+    }
+    .logo-text h1 {
+      font-family: Playfair Display;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .logo-text p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      animation: fadeRight 1s ease forwards 0.7s;
+    }
+    nav a {
+      color: var(--white);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(179,122,0,0.2);
+    }
+
+    /* Slider */
+    .slider {
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      height: 400px;
+      box-shadow: 0 10px 30px rgba(2,6,8,0.6);
+      animation: fadeUp 1s ease forwards 1s;
+    }
+    .slides {
+      display: flex;
+      width: 500%; /* adjust if more slides */
+      height: 100%;
+      transition: transform 1s ease;
+    }
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: transform 10s ease, filter 0.5s ease;
+    }
+    .slide:hover img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .slider-controls button {
+      pointer-events: all;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: var(--white);
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .slider-controls button:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+      margin: 40px 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+    .hero-text {
+      max-width: 500px;
+      animation: fadeLeft 1s ease forwards 1.4s;
+    }
+    .hero-text h2 {
+      font-family: Playfair Display;
+      font-size: 42px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero-text p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .hero-buttons {
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: #062517;
+    }
+    .btn.primary:hover {
+      transform: translateY(-4px);
+      background: #ffb84d;
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+    .btn.secondary:hover {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    .hero-image {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+      box-shadow: 0 10px 30px rgba(2,6,8,0.6);
+      animation: fadeUp 1s ease forwards 1.6s;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 10s ease;
+    }
+    .hero-image:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Products Section */
+    .section {
+      margin: 60px 0;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: fadeUp 1s ease forwards 1.8s;
+    }
+    .section-title h3 {
+      font-size: 32px;
+      font-family: Playfair Display;
+    }
+    .section-title p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      animation: fadeUp 1s ease forwards;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 40px rgba(2,6,8,0.7);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: transform 6s ease, filter 0.5s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+    .product-info {
+      padding: 16px;
+    }
+    .product-info h4 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .product-info p {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .buy-btn {
+      background: var(--accent-2);
+      color: var(--white);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .buy-btn:hover {
+      background: #085f3f;
+    }
+
+    /* Contact Us Section */
+    .contact-section {
+      background: var(--card);
+      padding: 40px 20px;
+      border-radius: 16px;
+      margin: 60px 0;
+      animation: fadeUp 1s ease forwards 2s;
+    }
+    .contact-section h3 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+      font-family: Playfair Display;
+    }
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .contact-box {
+      flex: 1 1 280px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      animation: fadeUp 1s ease forwards 2.2s;
+    }
+    .contact-box img {
+      width: 36px;
+      height: 36px;
+    }
+    .contact-box div {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-box div span {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .contact-box div small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+      animation: fadeUp 1s ease forwards 2.4s;
+    }
+    footer .footer-left, footer .footer-right {
+      flex: 1 1 250px;
+      margin: 10px 0;
+    }
+    footer .footer-left strong {
+      font-size: 18px;
+      color: var(--white);
+    }
+    footer a {
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: var(--accent-2);
+    }
+
+    /* Additional Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes rotateIn {
+      from { transform: rotate(-360deg) scale(0.6); opacity: 0; }
+      to { transform: rotate(0deg) scale(1); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .slider { height: 250px; }
+      .hero-image { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header + Logo -->
+    <header>
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVYZ3E0LkkjISHT9A7HcFI43Aau8RAI13Gw&s" alt="Kumar Ayurveda Logo">
+        </div>
+        <div class="logo-text">
+          <h1>Kumar Ayurveda</h1>
+          <p>Natural • Trusted • Jaipur</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#slider">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Experience Ayurveda in Every Drop</h2>
+        <p>Authentic, organic and pure Ayurvedic remedies prepared traditionally in Jaipur. We believe in wellness, healing, and nature's wisdom.</p>
+        <div class="hero-buttons">
+          <button class="btn primary" onclick="scrollToProducts()">Shop Products</button>
+          <button class="btn secondary" onclick="scrollToContact()">Contact Us</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7XQ03HumA6SQjHcjlVK4Fhjkk-WN2ED6N6A&s" alt="Hero Ayurvedic Blend">
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="section-title">
+        <h3>Featured Products</h3>
+        <p>Handpicked just for you</p>
+      </div>
+      <div class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaAA3w2NVjXbPt1NTMJ3APv47LdWbLerIitQ&s" alt="Tulsi Leaves">
+          <div class="product-info">
+            <h4>Tulsi Leaves</h4>
+            <p>Pure and fresh Tulsi leaves — herbal immunity booster.</p>
+            <div class="price-row">
+              <div class="price">₹149</div>
+              <button class="buy-btn" onclick="buyNow('Tulsi Leaves',149,'Tulsi')">Buy</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7XQ03HumA6SQjHcjlVK4Fhjkk-WN2ED6N6A&s" alt="Ayurvedic Oil">
+          <div class="product-info">
+            <h4>Ayurvedic Oil</h4>
+            <p>Nourishing oil blend for skin & hair wellness.</p>
+            <div class="price-row">
+              <div class="price">₹299</div>
+              <button class="buy-btn" onclick="buyNow('Ayurvedic Oil',299,'Oil')">Buy</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIk6hgS0Ey1b3ZrEfWDlVH-d-Kn_5M8Dn45Q&s" alt="Ayurvedic Medicine">
+          <div class="product-info">
+            <h4>Ayurvedic Medicine</h4>
+            <p>Traditional herbal medicine for health & balance.</p>
+            <div class="price-row">
+              <div class="price">₹399</div>
+              <button class="buy-btn" onclick="buyNow('Ayurvedic Medicine',399,'Medicine')">Buy</button>
+            </div>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWudphNfEOYw9uSHVKF7rDy8KFVrkkfak3KA&s" alt="Ayurvedic Kada">
+          <div class="product-info">
+            <h4>Ayurvedic Kada</h4>
+            <p>Herbal Kada for boosting immunity & wellness.</p>
+            <div class="price-row">
+              <div class="price">₹199</div>
+              <button class="buy-btn" onclick="buyNow('Ayurvedic Kada',199,'Kada')">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+      <h3>Contact Us</h3>
+      <div class="contact-details">
+        <div class="contact-box">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" alt="Address">
+          <div>
+            <span>Address</span>
+            <small>S-8, JDA Central Market, Amrapali Circle, Vaishali Nagar,<br>Jaipur, Rajasthan 302021</small>
+          </div>
+        </div>
+        <div class="contact-box">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Phone">
+          <div>
+            <span>Phone</span>
+            <small><a href="tel:+919610101144">096101 01144</a></small>
+          </div>
+        </div>
+        <div class="contact-box">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/email-open.png" alt="Email">
+          <div>
+            <span>Email</span>
+            <small><a href="mailto:info@kumarayurveda.com">info@kumarayurveda.com</a></small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-left">
+        <strong>Kumar Ayurveda</strong><br>
+        <span>S-8, JDA Central Market, Amrapali Circle,<br>Vaishali Nagar, Jaipur, Rajasthan 302021</span><br>
+        <span>Phone: <a href="tel:+919610101144">096101 01144</a></span>
+      </div>
+      <div class="footer-right">
+        <span>Follow us:</span><br>
+        <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a><br><br>
+        <small>© Kumar Ayurveda • All Rights Reserved.</small>
+      </div>
+    </footer>
+
+  </div> <!-- end container -->
+
+  <!-- Scripts -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const RAZORPAY_KEY_ID = 'rzp_live_LNZR89JqwRgbmd'; // replace with your real key
+
+    function buyNow(title, amount, sku) {
+      const amountPaise = amount * 100;
+      const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: amountPaise,
+        currency: 'INR',
+        name: 'Kumar Ayurveda',
+        description: title,
+        image: '', // optional
+        handler: function(response) {
+          alert('Payment successful! ID: ' + response.razorpay_payment_id);
+          // TODO: send to server: response.razorpay_payment_id, order details etc for verification
+        },
+        prefill: {
+          name: '',
+          email: '',
+          contact: ''
+        },
+        notes: { sku: sku }
+      };
+      const rzp = new Razorpay(options);
+      rzp.on('payment.failed', function (resp){
+        alert('Payment failed: ' + (resp.error && resp.error.description ? resp.error.description : 'Unknown error'));
+      });
+      rzp.open();
+    }
+
+    // Scroll helpers
+    function scrollToProducts() {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Slider behavior
+    (function(){
+      let currentIndex = 0;
+      const slidesEl = document.querySelector('.slides');
+      const total = document.querySelectorAll('.slide').length;
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+
+      function showSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        slidesEl.style.transform = `translateX(-${index * 100}%)`;
+        currentIndex = index;
+      }
+
+      prevBtn.addEventListener('click', () => { showSlide(currentIndex - 1); });
+      nextBtn.addEventListener('click', () => { showSlide(currentIndex + 1); });
+
+      // auto-slide every 5 seconds
+      setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 5000);
+    })();
+
+    // Reveal animations on scroll
+    document.addEventListener('scroll', function(){
+      const reveals = document.querySelectorAll('.product-card, .contact-section, .hero, .section-title');
+      for (const el of reveals) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      }
+    });
+    // initialize hidden state
+    window.addEventListener('load', function(){
+      const hiddenEls = document.querySelectorAll('.product-card, .contact-section, .hero, .section-title');
+      hiddenEls.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      });
+    });
+  </script>
+</body>
+</html>

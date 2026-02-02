@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  /* Modern Luxury Ayurveda Palette */
+  --background: #FFFCF5;
+  /* Rich Cream/Ivory */
+  --foreground: #1A2E22;
+  /* Deep Jungle Green (Text) */
+
+  --primary: #2D6A4F;
+  /* Deep Emerald - Authoritative & Healing */
+  --primary-dark: #1B4332;
+  /* Midnight Green */
+
+  --secondary: #D08C60;
+  /* Warm Copper/Clay - Vibrant Contrast */
+  --secondary-light: #E8B490;
+
+  --accent: #E9C46A;
+  /* Saffron Gold - Attractive Highlight */
+  --muted: #6B7280;
+
+  /* Standard Utility Colors */
+  --success: #15803d;
+  --warning: #b45309;
+  --error: #b91c1c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-serif: var(--font-playfair), ui-serif, Georgia;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+}
